@@ -763,8 +763,11 @@
         import { getAuth, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, doc, addDoc, setDoc, deleteDoc, onSnapshot, query, writeBatch } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
+        // ===================================================================================
+        // ===== FINAL FIX: AAPKI DI HUI SAHI API KEY DAAL DI GAYI HAI =======================
+        // ===================================================================================
         const firebaseConfig = {
-            apiKey: "AlzaSyC9MN4Cu5AP0v51LjW0dW0J4sz1IZI_INQ",
+            apiKey: "AIzaSyC9MN4Cu5APOv51LjW0dW0J4sz1IZl_lNQ",
             authDomain: "studytracker-215bd.firebaseapp.com",
             projectId: "studytracker-215bd",
             storageBucket: "studytracker-215bd.appspot.com",
@@ -802,19 +805,12 @@
         }];
 
         //-- AUTH & FIRESTORE --
-        
-        // ===================================================================================
-        // ===== FIX: SIGN-IN FUNCTION MEIN DETAILED ERROR LOGGING ADD KI GAYI HAI =========
-        // ===================================================================================
         const signInWithGoogle = async () => {
             const provider = new GoogleAuthProvider();
             try {
                 await signInWithPopup(auth, provider);
             } catch (error) {
-                // Asli error ka pata lagane ke liye poora error object console mein print karein
                 console.error("DETAILED SIGN-IN ERROR:", error);
-
-                // User ko zyada jaankari waala error message dikhayein
                 const title = `Sign-In Failed: (${error.code || 'UNKNOWN_CODE'})`;
                 const message = `Message: ${error.message || 'An unknown error occurred.'} Please check the developer console (F12) for more details.`;
                 showModal(title, message);
