@@ -763,34 +763,25 @@
         import { getAuth, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, doc, addDoc, setDoc, deleteDoc, onSnapshot, query, writeBatch } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // ===================================================================================
-        // ===== FIX 1: FIREBASE CONFIG KEYS THEEK KI GAYI HAIN ==============================
-        // ===================================================================================
-        // Aapke purane code mein 'projectId', 'appId' etc. ki jagah 'projectid', 'appld' likha tha.
-        // Maine unhe theek kar diya hai. Kripya apne Firebase project se values dobara check kar lein.
         const firebaseConfig = {
-            apiKey: "AlzaSyC9MN4Cu5AP0v51LjW0dW0J4sz1IZI_INQ", // Yeh value apne project se check karein
+            apiKey: "AlzaSyC9MN4Cu5AP0v51LjW0dW0J4sz1IZI_INQ",
             authDomain: "studytracker-215bd.firebaseapp.com",
-            projectId: "studytracker-215bd", // 'projectid' se 'projectId' kiya gaya
+            projectId: "studytracker-215bd",
             storageBucket: "studytracker-215bd.appspot.com",
-            messagingSenderId: "525490398192", // 'messagingSenderld' se 'messagingSenderId' kiya gaya
-            appId: "1:525490398192:web:d64e76d577b20ccfe1b335", // 'appld' se 'appId' kiya gaya
-            measurementId: "G-33TJY1RPFM" // 'measurementld' se 'measurementId' kiya gaya
+            messagingSenderId: "525490398192",
+            appId: "1:525490398192:web:d64e76d577b20ccfe1b335",
+            measurementId: "G-33TJY1RPFM"
         };
-
-        // ===================================================================================
-        // ===== BAAKI CODE AAPKA HI HAI, BINA KISI BADLAAV KE ===============================
-        // ===================================================================================
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
 
         let userId = null;
-        let entriesCR, profileDR, syllabusCR; //Firestore Collection/Document References
-        let localEntries = [], localProfile = {}, localSyllabus = {}; // Local data caches
-        let unsubscribers = []; // To manage Firestore snapshot listeners
-        let charts = {}; // Chart.js instances
+        let entriesCR, profileDR, syllabusCR;
+        let localEntries = [], localProfile = {}, localSyllabus = {};
+        let unsubscribers = [];
+        let charts = {};
 
         const subjectData = {
             'Accountancy': ['Intro to AS', 'Framework', 'AS 1-16', 'Company Accounts', 'Cash Flow', 'Branch Accounting'],
@@ -808,54 +799,31 @@
         }, {
             quote: "Success is not final, failure is not fatal: it is the courage to continue that counts.",
             author: "Winston Churchill"
-        }, {
-            quote: "Believe you can and you're halfway there.",
-            author: "Theodore Roosevelt"
-        }, {
-            quote: "The future belongs to those who believe in the beauty of their dreams.",
-            author: "Eleanor Roosevelt"
-        }, {
-            quote: "The best way to predict the future is to create it.",
-            author: "Peter Drucker"
-        }, {
-            quote: "Don't watch the clock; do what it does. Keep going.",
-            author: "Sam Levenson"
-        }, {
-            quote: "The mind is everything. What you think you become.",
-            author: "Buddha"
-        }, {
-            quote: "It always seems impossible until it's done.",
-            author: "Nelson Mandela"
-        }, {
-            quote: "Strive not to be a success, but rather to be of value.",
-            author: "Albert Einstein"
-        }, {
-            quote: "The expert in anything was once a beginner.",
-            author: "Helen Hayes"
         }];
 
         //-- AUTH & FIRESTORE --
+        
+        // ===================================================================================
+        // ===== FIX: SIGN-IN FUNCTION MEIN DETAILED ERROR LOGGING ADD KI GAYI HAI =========
+        // ===================================================================================
         const signInWithGoogle = async () => {
             const provider = new GoogleAuthProvider();
             try {
                 await signInWithPopup(auth, provider);
-                // onAuthStateChanged ab UI changes ko handle karega
             } catch (error) {
-                console.error("Error signing in with Google:", error);
-                let message = 'Could not sign in with Google. Please try again.';
-                if (error.code === 'auth/popup-closed-by-user') {
-                    message = 'Sign-in window was closed before completion.';
-                } else if (error.code === 'auth/unauthorized-domain') {
-                    message = 'This domain is not authorized for sign-in. Please contact the administrator.';
-                }
-                showModal('Sign-In Error', message);
+                // Asli error ka pata lagane ke liye poora error object console mein print karein
+                console.error("DETAILED SIGN-IN ERROR:", error);
+
+                // User ko zyada jaankari waala error message dikhayein
+                const title = `Sign-In Failed: (${error.code || 'UNKNOWN_CODE'})`;
+                const message = `Message: ${error.message || 'An unknown error occurred.'} Please check the developer console (F12) for more details.`;
+                showModal(title, message);
             }
         };
 
         document.getElementById('google-signin-btn').addEventListener('click', signInWithGoogle);
 
         onAuthStateChanged(auth, async (user) => {
-            // Purane listeners ko clear karein
             unsubscribers.forEach(unsub => unsub());
             unsubscribers = [];
 
@@ -863,60 +831,45 @@
             const appContainer = document.getElementById('app-container');
 
             if (user && !user.isAnonymous) {
-                // User sign in hai
                 userId = user.uid;
                 console.log("User authenticated. User ID:", userId);
-
-                // Firestore paths setup karein
                 const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
                 const basePath = `artifacts/${appId}/users/${userId}`;
-
                 entriesCR = collection(db, `${basePath}/entries`);
                 profileDR = doc(db, `${basePath}/profile/data`);
                 syllabusCR = collection(db, `${basePath}/syllabus`);
 
-                // App dikhayein, login page chupayein (fade out effect ke saath)
                 loginPage.classList.add('opacity-0', 'pointer-events-none');
                 setTimeout(() => {
                     loginPage.classList.add('hidden');
-                }, 500); // transition duration se match karein
+                }, 500);
                 appContainer.classList.remove('hidden');
-
-                // Listeners attach karein aur app initialize karein
                 attachFirestoreListeners(user);
-                initApp(); // App ko yahan initialize karein jab user login ho
+                initApp();
             } else {
-                // User sign out hai ya anonymous hai
                 userId = null;
                 localEntries = [];
                 localProfile = {};
                 localSyllabus = {};
                 console.log("No user authenticated. Showing login page.");
-
-                // Login page dikhayein, app chupayein
                 appContainer.classList.add('hidden');
                 loginPage.classList.remove('hidden');
                 loginPage.classList.remove('opacity-0', 'pointer-events-none');
-
-                // UI reset karein
-                updateAllStats(); // Yeh stats aur charts ko clear kar dega
+                updateAllStats();
             }
         });
 
         function attachFirestoreListeners(user) {
-            // Profile changes ke liye listen karein
             unsubscribers.push(onSnapshot(profileDR, (docSnapshot) => {
                 if (docSnapshot.exists()) {
                     localProfile = docSnapshot.data();
                 } else {
-                    // Naye users ke liye unke Google account se default profile banayein
                     localProfile = {
                         fullName: user.displayName || "New User",
                         email: user.email || "",
                         image: user.photoURL || `https://placehold.co/144x144/0f172a/38bdf8?text=${user.displayName?.[0] || 'U'}`,
                         theme: 'dark'
                     };
-                    // Is default profile ko Firestore mein save karein
                     saveProfile(true); 
                 }
                 console.log("Profile data updated:", localProfile);
@@ -926,7 +879,6 @@
                 console.error("Error listening to profile changes:", error);
             }));
 
-            // Entries changes ke liye listen karein
             unsubscribers.push(onSnapshot(query(entriesCR), (snapshot) => {
                 localEntries = snapshot.docs.map(d => ({
                     id: d.id,
@@ -939,7 +891,6 @@
                 console.error("Error listening to entries changes:", error);
             }));
 
-            // Syllabus changes ke liye listen karein
             unsubscribers.push(onSnapshot(query(syllabusCR), (snapshot) => {
                 localSyllabus = {};
                 snapshot.docs.forEach(d => {
@@ -1754,9 +1705,6 @@
             document.getElementById('quote-text').textContent = `"${quote.quote}"`;
             document.getElementById('quote-author').textContent = `- ${quote.author}`;
         }
-        
-        // App ko DOM load hone par initialize na karein, balki user ke login hone par karein.
-        // document.addEventListener('DOMContentLoaded', initApp);
     </script>
 </body>
 </html>
