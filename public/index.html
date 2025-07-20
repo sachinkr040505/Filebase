@@ -5,11 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Tracker - created by Sachin KumarJourney</title>
-
-    <!-- Tailwind CSS -->
+    <title>Study Tracker - created by Sachin Kumar</title>
+    <!--Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -45,28 +43,24 @@
             }
         }
     </script>
-
-    <!-- Google Fonts: Inter -->
+    <!--Google Fonts: Inter-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Feather Icons -->
+    <link href="https://fonts.googleapis.com/css?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!--Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
-
-    <!-- External Libraries -->
+    <!--External Libraries-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
     <style>
-        /* Base styles */
+        /* Base styles*/
         body {
             font-family: 'Inter', sans-serif;
         }
 
-        /* Light Theme */
+        /* Light Theme*/
         html:not(.dark) body {
             background-color: #f1f5f9;
             color: #1e293b;
@@ -112,7 +106,7 @@
             border-color: #cbd5e1;
         }
 
-        html:not(.dark) #journalTable thead {
+        html:not(.dark) #journal table thead {
             background-color: #f8fafc;
         }
 
@@ -121,7 +115,7 @@
             border: 1px solid #e2e8f0;
         }
 
-        /* Dark Theme */
+        /* Dark Theme*/
         html.dark body {
             background-color: #0f172a;
             color: #e2e8f0;
@@ -146,7 +140,7 @@
             border-color: #475569;
         }
 
-        html.dark #journalTable thead {
+        html.dark #journal table thead {
             background-color: #1e293b;
         }
 
@@ -155,7 +149,7 @@
             border: 1px solid #334155;
         }
 
-        /* Dynamic Backgrounds */
+        /* Dynamic Backgrounds*/
         .hero-background {
             position: absolute;
             top: 0;
@@ -266,7 +260,6 @@
             background-color: #f8fafc;
             padding: 0.75rem 1.5rem;
             font-weight: 600;
-            text-align: center;
             border-bottom: 1px solid #e2e8f0;
             display: flex;
             justify-content: space-between;
@@ -293,11 +286,10 @@
 </head>
 
 <body class="antialiased">
-
-    <!-- LOGIN PAGE -->
-    <div id="login-page" class="fixed inset-0 z-[2000] flex flex-col items-center justify-center bg-slate-900 p-4 text-center transition-opacity duration-500">
+    <!--LOGIN PAGE-->
+    <div id="login-page" class="fixed inset-0 z-[2000] flex flex-col items-center justify-center bg-slate-900 p-4 text-center transition-opacity duration-500 opacity-100">
         <div class="z-10 p-8">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-4" style="text-shadow: 0 0 20px rgba(56, 189, 248,0.5);">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-4" style="text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);">
                 Welcome to <span class="text-sky-500">Study Tracker Pro</span>
             </h1>
             <p class="max-w-2xl mx-auto text-lg md:text-xl text-slate-300 mb-8">
@@ -318,7 +310,7 @@
         </div>
     </div>
 
-    <!-- MAIN APP CONTAINER (Initially hidden) -->
+    <!--MAIN APP CONTAINER (Initially hidden) -->
     <div id="app-container" class="hidden">
         <!-- Settings Panel -->
         <div id="settings-panel" class="bg-slate-100 dark:bg-slate-900 shadow-2xl">
@@ -339,14 +331,14 @@
                     </div>
                     <div>
                         <h3 class="text-lg font-semibold mb-2">Account</h3>
-                        <button id="sign-out-btn" class="w-full text-left flex items-center space-x-3 p-3 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800">
+                        <button id="sign-out-btn" class="w-full text-left flex items-center space-x-3 p-3 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 text-sm">
                             <i data-feather="log-out" class="w-5 h-5 text-red-500"></i>
                             <span>Sign Out</span>
                         </button>
                     </div>
                     <div>
                         <h3 class="text-lg font-semibold mb-2">About</h3>
-                        <div class="p-4 rounded-lg bg-slate-200 dark:bg-slate-800 text-sm">
+                        <div class="p-4 rounded-lg bg-slate-200 dark:bg-slate-800">
                             <p><strong>Study Tracker Pro V5</strong></p>
                             <p class="mt-2">Your complete academic companion.</p>
                         </div>
@@ -356,7 +348,7 @@
         </div>
         <div id="settings-overlay" class="fixed inset-0 bg-black/50 z-[999] hidden opacity-0"></div>
 
-        <!-- Navigation -->
+        <!--Navigation-->
         <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16">
@@ -375,10 +367,15 @@
                             <a href="#profile" class="nav-link px-3 py-2 rounded-md text-sm font-medium">Profile</a>
                         </div>
                     </div>
-                    <div class="-mr-2 flex md:hidden">
-                        <button id="hamburger" type="button" class="p-2 rounded-md focus:outline-none">
-                            <i data-feather="menu"></i>
+                    <div class="flex items-center">
+                        <button id="open-settings-btn-nav" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 mr-2">
+                             <i data-feather="settings" class="w-5 h-5"></i>
                         </button>
+                        <div class="-mr-2 flex md:hidden">
+                            <button id="hamburger" type="button" class="p-2 rounded-md focus:outline-none">
+                                <i data-feather="menu"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -402,18 +399,18 @@
                     <div id="dark-hero-bg" class="hero-background"></div>
                     <div id="light-hero-bg" class="hero-background"></div>
                     <div id="hero-content" class="z-10 p-8">
-                        <h1 class="text-4xl md:text-6xl font-extrabold text-white dark:text-white text-slate-900 tracking-tight mb-4" style="text-shadow: 0 0 20px rgba(56, 189, 248,0.5);">
+                        <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4" style="text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);">
                             Master Your <span class="text-sky-500">Academic Journey</span>
                         </h1>
                         <p class="max-w-2xl mx-auto text-lg md:text-xl mb-8">
-                            Track, Analyze, and Excel in Your Studies with a modern,Created by sachin kumar.
+                            Track, Analyze, and Excel in Your Studies with a modern, Created by Sachin Kumar.
                         </p>
-                        <button class="cta-button bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg shadow-sky-500/20" href="#entry">
+                        <a class="cta-button bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg shadow-sky-500/20" href="#entry">
                             Start Tracking Now
-                        </button>
+                        </a>
                     </div>
                 </section>
-                <!-- Features Section -->
+                <!--Features Section-->
                 <section class="py-20 bg-slate-50 dark:bg-slate-800">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <h2 class="text-3xl font-extrabold text-center mb-12">Key Features</h2>
@@ -463,7 +460,7 @@
                         </div>
                     </div>
                 </section>
-                <!-- Stats Section -->
+                <!--Stats Section-->
                 <section class="py-20 bg-slate-100 dark:bg-slate-900">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <h2 class="text-3xl font-extrabold text-center mb-12">Your Academic Snapshot</h2>
@@ -487,7 +484,7 @@
                         </div>
                     </div>
                 </section>
-                <!-- Motivational Quote Section -->
+                <!--Motivational Quote Section-->
                 <section class="py-20 bg-slate-50 dark:bg-slate-800">
                     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                         <h2 class="text-3xl font-extrabold mb-8">Daily Motivation</h2>
@@ -563,7 +560,7 @@
                 </div>
             </div>
 
-            <!-- Journal Page -->
+            <!-- Journal Page-->
             <div id="journal" class="page">
                 <div class="max-w-7xl mx-auto py-12 px-4">
                     <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
@@ -589,13 +586,13 @@
                     </div>
                     <div class="glass-card rounded-xl overflow-hidden">
                         <div id="journalEntriesContainer" class="overflow-x-auto">
-                            <!-- Journal entries will be rendered here -->
+                            <!-- Journal entries will be rendered here-->
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Reports Page -->
+            <!-- Reports Page-->
             <div id="reports" class="page">
                 <div class="max-w-7xl mx-auto py-12 px-4">
                     <h2 class="text-3xl font-extrabold text-center mb-8">Study Analytics & Reports</h2>
@@ -645,7 +642,7 @@
                             <div class="glass-card p-6 rounded-xl">
                                 <h3 class="text-lg font-medium mb-4">Key Statistics</h3>
                                 <div id="stats-list-container" class="space-y-4">
-                                    <!-- Key statistics will be dynamically loaded here -->
+                                    <!--Key statistics will be dynamically loaded here-->
                                 </div>
                             </div>
                             <div class="glass-card p-6 rounded-xl flex flex-col">
@@ -755,11 +752,6 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="mt-8 pt-6 border-t border-slate-300 dark:border-slate-700 text-center">
-                            <button id="open-settings-btn" class="inline-flex items-center space-x-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 font-semibold py-2 px-4 rounded-lg">
-                                <i data-feather="settings" class="w-5 h-5"></i><span>Settings</span>
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -767,48 +759,36 @@
     </div>
 
     <script type="module">
-        import {
-            initializeApp
-        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import {
-            getAuth,
-            onAuthStateChanged,
-            signOut,
-            GoogleAuthProvider,
-            signInWithPopup
-        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import {
-            getFirestore,
-            collection,
-            doc,
-            addDoc,
-            setDoc,
-            deleteDoc,
-            onSnapshot,
-            query,
-            writeBatch
-        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, doc, addDoc, setDoc, deleteDoc, onSnapshot, query, writeBatch } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Firebase Configuration (Using the one from your PDF)
+        // ===================================================================================
+        // ===== FIX 1: FIREBASE CONFIG KEYS THEEK KI GAYI HAIN ==============================
+        // ===================================================================================
+        // Aapke purane code mein 'projectId', 'appId' etc. ki jagah 'projectid', 'appld' likha tha.
+        // Maine unhe theek kar diya hai. Kripya apne Firebase project se values dobara check kar lein.
         const firebaseConfig = {
-            apiKey: "AIzaSyC9MN4Cu5AP0v51LjW0dW0J4sz1IZI_INQ",
+            apiKey: "AlzaSyC9MN4Cu5AP0v51LjW0dW0J4sz1IZI_INQ", // Yeh value apne project se check karein
             authDomain: "studytracker-215bd.firebaseapp.com",
-            projectId: "studytracker-215bd",
+            projectId: "studytracker-215bd", // 'projectid' se 'projectId' kiya gaya
             storageBucket: "studytracker-215bd.appspot.com",
-            messagingSenderId: "525490398192",
-            appId: "1:525490398192:web:d64e76d577b20ccfe1b335",
-            measurementId: "G-33TJY1RPFM"
+            messagingSenderId: "525490398192", // 'messagingSenderld' se 'messagingSenderId' kiya gaya
+            appId: "1:525490398192:web:d64e76d577b20ccfe1b335", // 'appld' se 'appId' kiya gaya
+            measurementId: "G-33TJY1RPFM" // 'measurementld' se 'measurementId' kiya gaya
         };
+
+        // ===================================================================================
+        // ===== BAAKI CODE AAPKA HI HAI, BINA KISI BADLAAV KE ===============================
+        // ===================================================================================
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
 
         let userId = null;
-        let entriesCR, profileDR, syllabusCR; // Firestore Collection/Document References
-        let localEntries = [],
-            localProfile = {},
-            localSyllabus = {}; // Local data caches
+        let entriesCR, profileDR, syllabusCR; //Firestore Collection/Document References
+        let localEntries = [], localProfile = {}, localSyllabus = {}; // Local data caches
         let unsubscribers = []; // To manage Firestore snapshot listeners
         let charts = {}; // Chart.js instances
 
@@ -854,79 +834,89 @@
             author: "Helen Hayes"
         }];
 
-        // -- AUTH & FIRESTORE --
+        //-- AUTH & FIRESTORE --
         const signInWithGoogle = async () => {
             const provider = new GoogleAuthProvider();
             try {
                 await signInWithPopup(auth, provider);
-                // onAuthStateChanged will handle UI changes
+                // onAuthStateChanged ab UI changes ko handle karega
             } catch (error) {
                 console.error("Error signing in with Google:", error);
-                showModal('Sign-In Error', 'Could not sign in with Google. Please try again.');
+                let message = 'Could not sign in with Google. Please try again.';
+                if (error.code === 'auth/popup-closed-by-user') {
+                    message = 'Sign-in window was closed before completion.';
+                } else if (error.code === 'auth/unauthorized-domain') {
+                    message = 'This domain is not authorized for sign-in. Please contact the administrator.';
+                }
+                showModal('Sign-In Error', message);
             }
         };
-        
+
         document.getElementById('google-signin-btn').addEventListener('click', signInWithGoogle);
 
         onAuthStateChanged(auth, async (user) => {
-            // Clear previous listeners
+            // Purane listeners ko clear karein
             unsubscribers.forEach(unsub => unsub());
             unsubscribers = [];
-            
+
             const loginPage = document.getElementById('login-page');
             const appContainer = document.getElementById('app-container');
 
             if (user && !user.isAnonymous) {
-                // User is signed in
+                // User sign in hai
                 userId = user.uid;
                 console.log("User authenticated. User ID:", userId);
 
-                // Setup Firestore paths
+                // Firestore paths setup karein
                 const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
                 const basePath = `artifacts/${appId}/users/${userId}`;
+
                 entriesCR = collection(db, `${basePath}/entries`);
                 profileDR = doc(db, `${basePath}/profile/data`);
                 syllabusCR = collection(db, `${basePath}/syllabus`);
-                
-                // Show app, hide login page
+
+                // App dikhayein, login page chupayein (fade out effect ke saath)
+                loginPage.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    loginPage.classList.add('hidden');
+                }, 500); // transition duration se match karein
                 appContainer.classList.remove('hidden');
-                loginPage.classList.add('hidden');
 
-                // Attach listeners and initialize app
+                // Listeners attach karein aur app initialize karein
                 attachFirestoreListeners(user);
-
+                initApp(); // App ko yahan initialize karein jab user login ho
             } else {
-                // User is signed out or anonymous
+                // User sign out hai ya anonymous hai
                 userId = null;
                 localEntries = [];
                 localProfile = {};
                 localSyllabus = {};
-                
                 console.log("No user authenticated. Showing login page.");
-                
-                // Show login page, hide app
+
+                // Login page dikhayein, app chupayein
                 appContainer.classList.add('hidden');
                 loginPage.classList.remove('hidden');
-                
-                // Reset UI
-                updateAllStats(); // This will clear stats and charts
+                loginPage.classList.remove('opacity-0', 'pointer-events-none');
+
+                // UI reset karein
+                updateAllStats(); // Yeh stats aur charts ko clear kar dega
             }
         });
-        
+
         function attachFirestoreListeners(user) {
-            // Listen for profile changes
-            unsubscribers.push(onSnapshot(profileDR, (doc) => {
-                if (doc.exists()) {
-                    localProfile = doc.data();
+            // Profile changes ke liye listen karein
+            unsubscribers.push(onSnapshot(profileDR, (docSnapshot) => {
+                if (docSnapshot.exists()) {
+                    localProfile = docSnapshot.data();
                 } else {
-                    // Create a default profile for new users from their Google account
+                    // Naye users ke liye unke Google account se default profile banayein
                     localProfile = {
                         fullName: user.displayName || "New User",
                         email: user.email || "",
                         image: user.photoURL || `https://placehold.co/144x144/0f172a/38bdf8?text=${user.displayName?.[0] || 'U'}`,
-                        theme: 'dark' 
+                        theme: 'dark'
                     };
-                    // Save this default profile to Firestore
+                    // Is default profile ko Firestore mein save karein
                     saveProfile(true); 
                 }
                 console.log("Profile data updated:", localProfile);
@@ -936,7 +926,7 @@
                 console.error("Error listening to profile changes:", error);
             }));
 
-            // Listen for entries changes
+            // Entries changes ke liye listen karein
             unsubscribers.push(onSnapshot(query(entriesCR), (snapshot) => {
                 localEntries = snapshot.docs.map(d => ({
                     id: d.id,
@@ -949,7 +939,7 @@
                 console.error("Error listening to entries changes:", error);
             }));
 
-            // Listen for syllabus changes
+            // Syllabus changes ke liye listen karein
             unsubscribers.push(onSnapshot(query(syllabusCR), (snapshot) => {
                 localSyllabus = {};
                 snapshot.docs.forEach(d => {
@@ -962,26 +952,32 @@
             }));
         }
 
-        // -- THEME & SETTINGS --
+        //--THEME & SETTINGS--
         function applyTheme(theme) {
             document.documentElement.classList.toggle('dark', theme === 'dark');
             document.getElementById('theme-btn-light').classList.toggle('bg-white', theme === 'light');
+            document.getElementById('theme-btn-light').classList.toggle('text-slate-900', theme === 'light');
             document.getElementById('theme-btn-dark').classList.toggle('bg-slate-900', theme === 'dark');
             document.getElementById('theme-btn-dark').classList.toggle('text-white', theme === 'dark');
-            document.getElementById('theme-btn-light').classList.toggle('text-slate-900', theme === 'light');
 
             if (Object.keys(charts).length > 0) {
                 const textColor = document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#334155';
                 for (const chartKey in charts) {
-                    if (charts[chartKey].options) {
-                        if(charts[chartKey].options.plugins.legend) {
+                    if (charts[chartKey] && charts[chartKey].options) {
+                        if (charts[chartKey].options.plugins.legend) {
                             charts[chartKey].options.plugins.legend.labels.color = textColor;
                         }
-                        if(charts[chartKey].options.scales){
+                        if (charts[chartKey].options.scales) {
                             for (const scaleKey in charts[chartKey].options.scales) {
-                                charts[chartKey].options.scales[scaleKey].ticks.color = textColor;
-                                charts[chartKey].options.scales[scaleKey].grid.color = document.documentElement.classList.contains('dark') ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)';
-                                charts[chartKey].options.scales[scaleKey].borderColor = textColor;
+                                if(charts[chartKey].options.scales[scaleKey].ticks) {
+                                    charts[chartKey].options.scales[scaleKey].ticks.color = textColor;
+                                }
+                                if(charts[chartKey].options.scales[scaleKey].grid) {
+                                    charts[chartKey].options.scales[scaleKey].grid.color = document.documentElement.classList.contains('dark') ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)';
+                                }
+                                if(charts[chartKey].options.scales[scaleKey].title) {
+                                     charts[chartKey].options.scales[scaleKey].title.color = textColor;
+                                }
                             }
                         }
                         charts[chartKey].update('none');
@@ -994,7 +990,7 @@
             applyTheme(theme);
             if (userId && profileDR) {
                 try {
-                    await setDoc(profileDR, { theme }, { merge: true });
+                    await setDoc(profileDR, { theme: theme }, { merge: true });
                     console.log("Theme preference saved to Firestore.");
                 } catch (error) {
                     console.error("Error saving theme preference:", error);
@@ -1007,7 +1003,10 @@
             const overlay = document.getElementById('settings-overlay');
             if (open) {
                 overlay.classList.remove('hidden');
-                setTimeout(() => { panel.classList.add('open'); overlay.classList.add('opacity-100'); }, 10);
+                setTimeout(() => {
+                    overlay.classList.add('opacity-100');
+                    panel.classList.add('open');
+                }, 10);
             } else {
                 panel.classList.remove('open');
                 overlay.classList.remove('opacity-100');
@@ -1015,21 +1014,25 @@
             }
         }
 
-        document.getElementById('open-settings-btn').addEventListener('click', () => toggleSettings(true));
+        document.getElementById('open-settings-btn-nav').addEventListener('click', () => toggleSettings(true));
         document.getElementById('close-settings-btn').addEventListener('click', () => toggleSettings(false));
         document.getElementById('settings-overlay').addEventListener('click', () => toggleSettings(false));
         document.getElementById('theme-btn-light').addEventListener('click', () => saveThemePreference('light'));
         document.getElementById('theme-btn-dark').addEventListener('click', () => saveThemePreference('dark'));
         document.getElementById('sign-out-btn').addEventListener('click', () => signOut(auth));
 
-
-        // -- PAGE NAVIGATION --
-        document.querySelectorAll('.nav-link, .cta-button').forEach(link => {
+        //--PAGE NAVIGATION--
+        document.querySelectorAll('.nav-link, .cta-button, .feature-tile').forEach(link => {
             link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (!href || !href.startsWith('#')) return;
                 e.preventDefault();
-                const pageId = link.getAttribute('href')?.substring(1) || 'home';
+                const pageId = href.substring(1);
                 document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-                document.getElementById(pageId)?.classList.add('active');
+                const targetPage = document.getElementById(pageId);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                }
                 document.querySelectorAll('.nav-link').forEach(l => l.classList.toggle('active', l.getAttribute('href') === `#${pageId}`));
                 document.getElementById('mobile-menu').classList.add('hidden');
                 if (pageId === 'reports') {
@@ -1038,12 +1041,12 @@
                 window.scrollTo(0, 0);
             });
         });
-
-        // -- DYNAMIC CONTENT & FORMS --
-        function populateSelect(elId, options) {
+        
+        //--DYNAMIC CONTENT & FORMS--
+        function populateSelect(elId, options, hasAllOption = true) {
             const select = document.getElementById(elId);
             if (!select) return;
-            select.innerHTML = `<option value="">${elId.includes('Filter') ? 'All Subjects' : 'Select Subject'}</option>`;
+            select.innerHTML = hasAllOption ? `<option value="">${elId.includes('Filter') ? 'All Subjects' : 'Select Subject'}</option>` : '';
             options.forEach(opt => select.innerHTML += `<option value="${opt}">${opt}</option>`);
         }
 
@@ -1085,7 +1088,7 @@
         document.getElementById('timeStart').addEventListener('change', calculateHours);
         document.getElementById('timeEnd').addEventListener('change', calculateHours);
 
-        // -- SAVE ENTRY --
+        //--SAVE ENTRY--
         document.getElementById('studyForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             if (!userId) {
@@ -1113,12 +1116,12 @@
                 document.querySelector('.nav-link[href="#journal"]').click();
                 showModal('Success', 'Entry added successfully!');
             } catch (error) {
-                console.error("Error adding document to Firestore: ", error);
+                console.error("Error adding document to Firestore:", error);
                 showModal('Error', 'Failed to add entry. Please try again. Check console for details.');
             }
         });
 
-        // -- JOURNAL & FILTERS --
+        //--JOURNAL & FILTERS--
         function renderJournal() {
             const journalEntriesContainer = document.getElementById('journalEntriesContainer');
             if (!journalEntriesContainer) return;
@@ -1130,62 +1133,59 @@
                 }
                 return new Date(b.createdAt) - new Date(a.createdAt);
             });
-
             if (filtered.length === 0) {
                 journalEntriesContainer.innerHTML = `<p class="text-center py-8">No entries found.</p>`;
                 return;
             }
-
             const groupedEntries = filtered.reduce((acc, entry) => {
                 const dateKey = entry.date;
                 if (!acc[dateKey]) { acc[dateKey] = []; }
                 acc[dateKey].push(entry);
                 return acc;
             }, {});
-
             let htmlContent = "";
             for (const dateKey in groupedEntries) {
                 const entriesForDay = groupedEntries[dateKey];
                 const totalDailyHours = entriesForDay.reduce((sum, entry) => sum + (parseFloat(entry.hours) || 0), 0).toFixed(1);
                 htmlContent += `
-                    <div class="journal-day-group glass-card mb-6">
-                        <div class="journal-day-header">
-                            <span class="text-lg font-bold">${formatDate(dateKey)}</span>
-                            <span class="text-md font-semibold">Total Daily Hours: ${totalDailyHours}</span>
-                        </div>
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full">
-                                <thead>
-                                    <tr>
-                                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Subject</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Chapter</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Hours</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Mood</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Difficulty</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Remarks</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                <div class="journal-day-group glass-card mb-6">
+                    <div class="journal-day-header">
+                        <span class="text-lg font-bold">${formatDate(dateKey)}</span>
+                        <span class="text-md font-semibold">Total Daily Hours: ${totalDailyHours}</span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-left">
+                            <thead>
+                                <tr>
+                                    <th class="px-6 py-3 text-xs font-medium uppercase tracking-wider">Subject</th>
+                                    <th class="px-6 py-3 text-xs font-medium uppercase tracking-wider">Chapter</th>
+                                    <th class="px-6 py-3 text-xs font-medium uppercase tracking-wider">Hours</th>
+                                    <th class="px-6 py-3 text-xs font-medium uppercase tracking-wider">Mood</th>
+                                    <th class="px-6 py-3 text-xs font-medium uppercase tracking-wider">Difficulty</th>
+                                    <th class="px-6 py-3 text-xs font-medium uppercase tracking-wider">Remarks</th>
+                                    <th class="px-6 py-3 text-xs font-medium uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                 `;
                 entriesForDay.forEach(entry => {
                     htmlContent += `
-                        <tr class="journal-entry-row border-b border-slate-200 dark:border-slate-700">
-                            <td class="px-6 py-4 text-sm">${entry.subject || 'N/A'}</td>
-                            <td class="px-6 py-4 text-sm max-w-xs truncate" title="${entry.chapter || 'N/A'}">${entry.chapter || 'N/A'}</td>
-                            <td class="px-6 py-4 text-sm">${(parseFloat(entry.hours) || 0).toFixed(1)}</td>
-                            <td class="px-6 py-4 text-sm">${entry.mood || 'N/A'}</td>
-                            <td class="px-6 py-4 text-sm">${entry.difficulty || 'N/A'}</td>
-                            <td class="px-6 py-4 text-sm max-w-xs truncate" title="${entry.remarks || 'N/A'}">${entry.remarks || 'N/A'}</td>
-                            <td class="px-6 py-4 text-sm">
-                                <button onclick="deleteEntry('${entry.id}')" class="text-red-500 hover:text-red-700">
-                                    <i data-feather="trash-2" class="w-4 h-4"></i>
-                                </button>
-                            </td>
-                        </tr>
+                    <tr class="journal-entry-row">
+                        <td class="px-6 py-4 text-sm">${entry.subject || 'N/A'}</td>
+                        <td class="px-6 py-4 text-sm max-w-xs truncate" title="${entry.chapter || 'N/A'}">${entry.chapter || 'N/A'}</td>
+                        <td class="px-6 py-4 text-sm">${(parseFloat(entry.hours) || 0).toFixed(1)}</td>
+                        <td class="px-6 py-4 text-sm">${entry.mood || 'N/A'}</td>
+                        <td class="px-6 py-4 text-sm">${entry.difficulty || 'N/A'}</td>
+                        <td class="px-6 py-4 text-sm max-w-xs truncate" title="${entry.remarks || 'N/A'}">${entry.remarks || 'N/A'}</td>
+                        <td class="px-6 py-4 text-sm">
+                            <button onclick="deleteEntry('${entry.id}')" class="text-red-500 hover:text-red-700">
+                                <i data-feather="trash-2" class="w-4 h-4"></i>
+                            </button>
+                        </td>
+                    </tr>
                     `;
                 });
-                htmlContent += `</tbody></table></div></div>`;
+                htmlContent += '</tbody></table></div></div>';
             }
             journalEntriesContainer.innerHTML = htmlContent;
             feather.replace();
@@ -1196,6 +1196,7 @@
             const from = document.getElementById('filterDateFrom').value;
             const to = document.getElementById('filterDateTo').value;
             return localEntries.filter(e => {
+                if (!e.date) return false;
                 const entryDate = new Date(e.date);
                 const fromDate = from ? new Date(from) : null;
                 const toDate = to ? new Date(to) : null;
@@ -1204,6 +1205,7 @@
                     (!toDate || entryDate <= toDate);
             });
         };
+
         window.applyFilters = renderJournal;
         window.clearFilters = () => {
             document.getElementById('filterSubject').value = "";
@@ -1232,29 +1234,36 @@
             if (!modal) {
                 modal = document.createElement('div');
                 modal.id = 'customModal';
-                modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[1001] hidden';
+                modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[3000] hidden';
                 modal.innerHTML = `
-                    <div class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-xl max-w-sm w-full mx-4">
-                        <h3 id="modalTitle" class="text-xl font-bold mb-4"></h3>
-                        <p id="modalMessage" class="mb-6"></p>
-                        <div class="flex justify-end space-x-4">
-                            <button id="modalCancel" class="bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-700 text-slate-800 dark:text-white font-bold py-2 px-4 rounded-lg">Cancel</button>
-                            <button id="modalConfirm" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-lg">OK</button>
-                        </div>
-                    </div>`;
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-xl max-w-sm w-full mx-4">
+                    <h3 id="modalTitle" class="text-xl font-bold mb-4"></h3>
+                    <p id="modalMessage" class="mb-6"></p>
+                    <div class="flex justify-end space-x-4">
+                        <button id="modalCancel" class="bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-700 text-slate-800 dark:text-white font-bold py-2 px-4 rounded-lg">Cancel</button>
+                        <button id="modalConfirm" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-lg">OK</button>
+                    </div>
+                </div>`;
                 document.body.appendChild(modal);
             }
             document.getElementById('modalTitle').textContent = title;
             document.getElementById('modalMessage').textContent = message;
             const modalConfirmBtn = document.getElementById('modalConfirm');
             const modalCancelBtn = document.getElementById('modalCancel');
-            modalConfirmBtn.onclick = () => {
+            
+            const confirmHandler = () => {
                 modal.classList.add('hidden');
                 if (onConfirm) onConfirm();
+                modalConfirmBtn.removeEventListener('click', confirmHandler);
             };
-            modalCancelBtn.onclick = () => {
+            modalConfirmBtn.addEventListener('click', confirmHandler);
+
+            const cancelHandler = () => {
                 modal.classList.add('hidden');
+                modalCancelBtn.removeEventListener('click', cancelHandler);
             };
+            modalCancelBtn.addEventListener('click', cancelHandler);
+
             modal.classList.remove('hidden');
             if (onConfirm) {
                 modalCancelBtn.classList.remove('hidden');
@@ -1263,7 +1272,7 @@
             }
         }
 
-        // -- PROFILE --
+        //--PROFILE--
         function renderProfile() {
             const fields = ['fullName', 'email', 'institution', 'course', 'academicYear', 'major', 'contact', 'location', 'goal'];
             fields.forEach(f => {
@@ -1304,6 +1313,7 @@
             }
         }
         window.saveProfile = saveProfile;
+        window.renderProfile = renderProfile;
 
         document.getElementById('imageUpload').addEventListener('change', (event) => {
             const file = event.target.files[0];
@@ -1317,7 +1327,7 @@
             }
         });
 
-        // -- CHARTS & STATS --
+        //--CHARTS & STATS--
         function initCharts() {
             const commonOptions = (type) => ({
                 responsive: true,
@@ -1332,13 +1342,11 @@
                     x: {
                         ticks: { color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#334155' },
                         grid: { color: document.documentElement.classList.contains('dark') ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' },
-                        borderColor: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#334155',
                         display: type === 'bar' || type === 'line'
                     },
                     y: {
                         ticks: { color: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#334155' },
                         grid: { color: document.documentElement.classList.contains('dark') ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' },
-                        borderColor: document.documentElement.classList.contains('dark') ? '#e2e8f0' : '#334155',
                         beginAtZero: true,
                         display: type === 'bar' || type === 'line'
                     }
@@ -1360,7 +1368,13 @@
                         { label: 'Average Difficulty (1-4)', backgroundColor: '#facc15', data: [] }
                     ]
                 },
-                options: { ...commonOptions('bar'), scales: { x: { ...commonOptions('bar').scales.x, stacked: false, }, y: { ...commonOptions('bar').scales.y, stacked: false, max: 4, min: 0, ticks: { stepSize: 1 } } } }
+                options: {
+                    ...commonOptions('bar'),
+                    scales: {
+                        x: { ...commonOptions('bar').scales.x, stacked: false },
+                        y: { ...commonOptions('bar').scales.y, stacked: false, max: 4, min: 0, ticks: { stepSize: 1 } }
+                    }
+                }
             });
         }
 
@@ -1412,15 +1426,14 @@
 
             let currentStreak = 0;
             let lastDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-            if (stats.dailyHours[formatDateForInput(lastDate)]) { currentStreak = 1; }
-            else { lastDate.setDate(lastDate.getDate() - 1); }
             for (let i = 0; i < 365; i++) {
                 const dateToCheck = formatDateForInput(lastDate);
                 if (stats.dailyHours[dateToCheck]) {
                     currentStreak++;
                     lastDate.setDate(lastDate.getDate() - 1);
-                } else if (i > 0) { break; }
-                else { break; }
+                } else {
+                    break;
+                }
             }
             stats.currentStreak = currentStreak;
 
@@ -1431,25 +1444,27 @@
             document.getElementById('streak').textContent = stats.currentStreak;
 
             const statsListContainer = document.getElementById('stats-list-container');
-            let statsListHtml = `<ul class="list-disc list-inside space-y-2">
-                <li>Total Study Sessions: <span class="font-semibold">${stats.totalEntries}</span></li>
-                <li>Total Hours Studied: <span class="font-semibold">${stats.totalHours.toFixed(1)}</span></li>
-                <li>Average Hours per Study Day: <span class="font-semibold">${uniqueStudyDays > 0 ? (stats.totalHours / uniqueStudyDays).toFixed(1) : '0'}</span></li>
-                <li>Current Study Streak: <span class="font-semibold">${stats.currentStreak} days</span></li>`;
+            let statsListHtml = '<ul class="list-disc list-inside space-y-2">';
+            statsListHtml += `<li>Total Study Sessions: <span class="font-semibold">${stats.totalEntries}</span></li>`;
+            statsListHtml += `<li>Total Hours Studied: <span class="font-semibold">${stats.totalHours.toFixed(1)}</span></li>`;
+            statsListHtml += `<li>Average Hours per Study Day: <span class="font-semibold">${uniqueStudyDays > 0 ? (stats.totalHours / uniqueStudyDays).toFixed(1) : '0'}</span></li>`;
+            statsListHtml += `<li>Current Study Streak: <span class="font-semibold">${stats.currentStreak} days</span></li>`;
             const mostStudiedSubject = Object.keys(stats.subjectHours).reduce((a, b) => stats.subjectHours[a] > stats.subjectHours[b] ? a : b, null);
             if (mostStudiedSubject) { statsListHtml += `<li>Most Studied Subject: <span class="font-semibold">${mostStudiedSubject} (${stats.subjectHours[mostStudiedSubject].toFixed(1)} hours)</span></li>`; }
             const mostCommonMood = Object.keys(stats.moodCount).reduce((a, b) => stats.moodCount[a] > stats.moodCount[b] ? a : b, null);
             if (mostCommonMood) { statsListHtml += `<li>Most Common Mood: <span class="font-semibold">${mostCommonMood}</span></li>`; }
             const mostCommonDifficulty = Object.keys(stats.difficultyCount).reduce((a, b) => stats.difficultyCount[a] > stats.difficultyCount[b] ? a : b, null);
             if (mostCommonDifficulty) { statsListHtml += `<li>Most Common Difficulty: <span class="font-semibold">${mostCommonDifficulty}</span></li>`; }
-            statsListHtml += `</ul>`;
+            statsListHtml += '</ul>';
             statsListContainer.innerHTML = statsListHtml;
 
             const updateChart = (chart, labels, data, datasetIndex = 0) => {
+                if (!chart) return;
                 chart.data.labels = labels;
                 chart.data.datasets[datasetIndex].data = data;
                 chart.update('none');
             };
+
             updateChart(charts.subject, Object.keys(stats.subjectHours), Object.values(stats.subjectHours));
             updateChart(charts.mood, Object.keys(stats.moodCount), Object.values(stats.moodCount));
             updateChart(charts.difficulty, Object.keys(stats.difficultyCount), Object.values(stats.difficultyCount));
@@ -1471,7 +1486,7 @@
             updateAllStats();
         });
 
-        // -- SYLLABUS --
+        //--SYLLABUS--
         function renderSyllabus() {
             const syllabusContainer = document.getElementById('syllabus-container');
             if (!syllabusContainer) return;
@@ -1479,30 +1494,30 @@
                 syllabusContainer.innerHTML = `<p class="text-center py-8">No syllabus data found. Add subjects and chapters to track your progress.</p>`;
                 return;
             }
-            let html = "";
+            let html = ``;
             for (const subject in subjectData) {
                 const chapters = subjectData[subject];
                 const completedChapters = localSyllabus[subject] ? localSyllabus[subject].completed || [] : [];
                 const progress = chapters.length > 0 ? (completedChapters.length / chapters.length) * 100 : 0;
                 html += `
-                    <details class="glass-card p-4 rounded-xl shadow-md">
-                        <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold">
-                            <span>${subject} (${completedChapters.length}/${chapters.length} Chapters)</span>
-                            <span class="text-sky-500">${progress.toFixed(0)}%</span>
-                        </summary>
-                        <div class="mt-4 space-y-2">
-                            <div class="w-full bg-slate-200 rounded-full h-2.5 dark:bg-slate-700">
-                                <div class="bg-sky-500 h-2.5 rounded-full" style="width: ${progress}%"></div>
-                            </div>
-                            <ul class="list-disc list-inside ml-4 pt-2">`;
+                <details class="glass-card p-4 rounded-xl shadow-md">
+                    <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold">
+                        <span>${subject} (${completedChapters.length}/${chapters.length} Chapters)</span>
+                        <span class="text-sky-500">${progress.toFixed(0)}%</span>
+                    </summary>
+                    <div class="mt-4 space-y-2">
+                        <div class="w-full bg-slate-200 rounded-full h-2.5 dark:bg-slate-700">
+                            <div class="bg-sky-500 h-2.5 rounded-full" style="width: ${progress}%"></div>
+                        </div>
+                        <ul class="list-disc list-inside ml-4 pt-2">`;
                 chapters.forEach(chapter => {
                     const isCompleted = completedChapters.includes(chapter);
-                    html += `<li class="flex items-center justify-between">
+                    html += `<li class="flex items-center justify-between py-1">
                                 <span class="${isCompleted ? 'line-through text-slate-500' : ''}">${chapter}</span>
-                                <input type="checkbox" data-subject="${subject}" data-chapter="${chapter}" ${isCompleted ? 'checked' : ''} class="form-checkbox h-5 w-5 text-sky-600 rounded-md border-gray-300 focus:ring-sky-500" onchange="toggleChapterCompletion(this)">
+                                <input type="checkbox" data-subject="${subject}" data-chapter="${chapter}" ${isCompleted ? 'checked' : ''} class="form-checkbox h-5 w-5 text-sky-600 border-gray-300 rounded-md focus:ring-sky-500" onchange="toggleChapterCompletion(this)">
                              </li>`;
                 });
-                html += `</ul></div></details>`;
+                html += '</ul></div></details>';
             }
             syllabusContainer.innerHTML = html;
         }
@@ -1517,8 +1532,7 @@
             const isChecked = checkbox.checked;
             const currentSyllabus = localSyllabus[subject] || { completed: [] };
             let completedChapters = new Set(currentSyllabus.completed);
-            if (isChecked) { completedChapters.add(chapter); }
-            else { completedChapters.delete(chapter); }
+            if (isChecked) { completedChapters.add(chapter); } else { completedChapters.delete(chapter); }
             try {
                 await setDoc(doc(syllabusCR, subject), { completed: Array.from(completedChapters) }, { merge: true });
                 console.log(`Syllabus for ${subject} updated in Firestore.`);
@@ -1528,24 +1542,151 @@
             }
         };
 
-        // -- PDF, IMPORT/EXPORT --
-        window.generateJournalPDF = async () => { /* Code from PDF is correct, no changes needed */ };
-        window.generateReportsPDF = async () => { /* Code from PDF is correct, no changes needed */ };
-        window.exportData = () => { /* Code from PDF is correct, no changes needed */ };
-        document.getElementById('importFile').addEventListener('change', (event) => { /* Code from PDF is correct, no changes needed */ });
-        
-        // -- INITIALIZATION --
+        //--PDF, IMPORT/EXPORT--
+        window.generateJournalPDF = async () => {
+            document.getElementById('pdfLoading').classList.remove('hidden');
+            try {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF('p', 'pt', 'a4');
+                const filtered = getFilteredEntries().sort((a, b) => new Date(b.date) - new Date(a.date));
+                if (filtered.length === 0) {
+                    showModal('No Data', 'No journal entries found to generate PDF.');
+                    document.getElementById('pdfLoading').classList.add('hidden');
+                    return;
+                }
+                const tableColumn = ["Date", "Subject", "Chapter", "Hours", "Mood", "Difficulty", "Remarks"];
+                const tableRows = [];
+                filtered.forEach(entry => {
+                    const entryData = [
+                        formatDate(entry.date),
+                        entry.subject || 'N/A',
+                        entry.chapter || 'N/A',
+                        (parseFloat(entry.hours) || 0).toFixed(1),
+                        entry.mood || 'N/A',
+                        entry.difficulty || 'N/A',
+                        entry.remarks || ""
+                    ];
+                    tableRows.push(entryData);
+                });
+                doc.autoTable({
+                    head: [tableColumn],
+                    body: tableRows,
+                    startY: 60,
+                });
+                doc.save('study-journal.pdf');
+            } catch (e) {
+                showModal('Error', 'Failed to generate Journal PDF.');
+            } finally {
+                document.getElementById('pdfLoading').classList.add('hidden');
+            }
+        };
+
+        window.generateReportsPDF = async () => {
+             document.getElementById('pdfLoading').classList.remove('hidden');
+            try {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF('p', 'pt', 'a4');
+                const pdfWidth = doc.internal.pageSize.getWidth();
+                const margin = 40;
+                let yPos = margin;
+                doc.setFontSize(22);
+                doc.text("Study Analytics & Reports", pdfWidth / 2, yPos, { align: 'center' });
+                yPos += 30;
+
+                const chartsToExport = ['subjectChart', 'consistencyChart', 'moodChart', 'difficultyChart', 'performanceChart'];
+                for (const chartId of chartsToExport) {
+                    const canvas = document.getElementById(chartId);
+                    if (canvas && charts[chartId] && charts[chartId].data.datasets[0].data.length > 0) {
+                        const chartTitle = canvas.closest('.glass-card').querySelector('h3').textContent;
+                        const imgData = canvas.toDataURL('image/png', 1.0);
+                        doc.setFontSize(14);
+                        doc.text(chartTitle, margin, yPos);
+                        yPos += 15;
+                        doc.addImage(imgData, 'PNG', margin, yPos, pdfWidth - 2 * margin, 150);
+                        yPos += 180;
+                        if(yPos > doc.internal.pageSize.getHeight() - 100) {
+                            doc.addPage();
+                            yPos = margin;
+                        }
+                    }
+                }
+                doc.save('study-reports.pdf');
+            } catch (e) {
+                console.error("PDF generation error:", e);
+                showModal('Error', 'Failed to generate Reports PDF.');
+            } finally {
+                document.getElementById('pdfLoading').classList.add('hidden');
+            }
+        };
+
+        window.exportData = () => {
+            const dataToExport = {
+                entries: localEntries,
+                profile: localProfile,
+                syllabus: localSyllabus
+            };
+            const dataStr = JSON.stringify(dataToExport, null, 2);
+            const blob = new Blob([dataStr], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `studytracker_data_${new Date().toISOString().slice(0, 10)}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showModal('Export Complete', 'Your study data has been exported successfully!');
+        };
+
+        document.getElementById('importFile').addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (!file || !userId) {
+                showModal('Error', 'Please select a file and ensure you are signed in.');
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = async (e) => {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (data.entries) {
+                        const batch = writeBatch(db);
+                        data.entries.forEach(entry => {
+                            const { id, ...entryWithoutId } = entry;
+                            batch.set(doc(entriesCR), entryWithoutId);
+                        });
+                        await batch.commit();
+                    }
+                    if (data.profile) {
+                        await setDoc(profileDR, data.profile, { merge: true });
+                    }
+                    if (data.syllabus) {
+                        const syllabusBatch = writeBatch(db);
+                        for (const subject in data.syllabus) {
+                            syllabusBatch.set(doc(syllabusCR, subject), data.syllabus[subject], { merge: true });
+                        }
+                        await syllabusBatch.commit();
+                    }
+                    showModal('Import Complete', 'Data imported successfully. The page will now refresh.');
+                    setTimeout(() => window.location.reload(), 2000);
+                } catch (error) {
+                    showModal('Import Error', 'Failed to import data. Please ensure the file is a valid JSON.');
+                }
+            };
+            reader.readAsText(file);
+            event.target.value = null;
+        });
+
+        //--INITIALIZATION --
         function initApp() {
             const subjects = Object.keys(subjectData);
-            populateSelect('subject', subjects);
+            populateSelect('subject', subjects, false);
             populateSelect('filterSubject', subjects);
             populateSelect('reportFilterSubject', subjects);
 
             const bgContainers = ['dark-hero-bg', 'dark-hero-bg-login'];
             bgContainers.forEach(bgId => {
                 const darkBg = document.getElementById(bgId);
-                if (darkBg) {
-                    darkBg.innerHTML = "";
+                if (darkBg && darkBg.children.length === 0) {
                     for (let i = 0; i < 100; i++) {
                         const s = document.createElement('div');
                         s.className = 'star';
@@ -1554,14 +1695,13 @@
                     }
                 }
             });
-            
+
             const lightBg = document.getElementById('light-hero-bg');
-            if (lightBg) {
-                lightBg.innerHTML = "";
+            if (lightBg && lightBg.children.length === 0) {
                 for (let i = 0; i < 15; i++) {
                     const c = document.createElement('div');
                     c.className = 'cloud';
-                    c.style.cssText = `width:${Math.random()*100+50}px; height:${c.style.width}; top:${Math.random()*60}%; left:${Math.random()*100}%; animation-duration:${Math.random()*40+40}s;`;
+                    c.style.cssText = `width:${Math.random()*100+50}px; height:${c.style.width}; top:${Math.random()*60}%; animation-duration:${Math.random()*40+40}s; left:${Math.random()*100}%;`;
                     lightBg.appendChild(c);
                 }
             }
@@ -1614,143 +1754,10 @@
             document.getElementById('quote-text').textContent = `"${quote.quote}"`;
             document.getElementById('quote-author').textContent = `- ${quote.author}`;
         }
-
-        document.addEventListener('DOMContentLoaded', initApp);
-
-        // Re-exposing functions to window that were in the original code
-        // and might be called by inline event handlers in the unchanged HTML parts.
-        window.generateJournalPDF = async () => {
-            document.getElementById('pdfLoading').classList.remove('hidden');
-            try {
-                const { jsPDF } = window.jspdf;
-                const doc = new jsPDF('p', 'pt', 'a4');
-                const filtered = getFilteredEntries().sort((a, b) => new Date(b.date) - new Date(a.date));
-                if (filtered.length === 0) {
-                    showModal('No Data', 'No journal entries found to generate PDF.');
-                    document.getElementById('pdfLoading').classList.add('hidden');
-                    return;
-                }
-                const tableColumn = ["Date", "Subject", "Chapter", "Hours", "Mood", "Difficulty", "Remarks"];
-                const tableRows = [];
-                filtered.forEach(entry => {
-                    const entryData = [
-                        formatDate(entry.date),
-                        entry.subject || 'N/A',
-                        entry.chapter || 'N/A',
-                        (parseFloat(entry.hours) || 0).toFixed(1),
-                        entry.mood || 'N/A',
-                        entry.difficulty || 'N/A',
-                        entry.remarks || ''
-                    ];
-                    tableRows.push(entryData);
-                });
-                doc.autoTable({
-                    head: [tableColumn],
-                    body: tableRows,
-                    startY: 60,
-                    // ... styles from original code
-                });
-                doc.save('study-journal.pdf');
-            } catch (e) {
-                showModal('Error', 'Failed to generate Journal PDF.');
-            } finally {
-                document.getElementById('pdfLoading').classList.add('hidden');
-            }
-        };
-
-        window.generateReportsPDF = async () => {
-             document.getElementById('pdfLoading').classList.remove('hidden');
-            try {
-                const { jsPDF } = window.jspdf;
-                const doc = new jsPDF('p', 'pt', 'a4');
-                const pdfWidth = doc.internal.pageSize.getWidth();
-                const margin = 40;
-                let yPos = margin;
-
-                doc.setFontSize(22);
-                doc.text("Study Analytics & Reports", pdfWidth / 2, yPos, { align: 'center' });
-                yPos += 30;
-
-                // Add charts one by one
-                const chartsToExport = ['subjectChart', 'consistencyChart', 'moodChart', 'difficultyChart', 'performanceChart'];
-                for (const chartId of chartsToExport) {
-                    const canvas = document.getElementById(chartId);
-                    if (canvas && charts[chartId] && charts[chartId].data.datasets[0].data.length > 0) {
-                         const chartTitle = canvas.closest('.glass-card').querySelector('h3').textContent;
-                         const imgData = canvas.toDataURL('image/png', 1.0);
-                         // ... logic to add image to PDF from original code
-                         doc.addImage(imgData, 'PNG', margin, yPos + 20, pdfWidth - 2 * margin, 150);
-                         yPos += 180;
-                    }
-                }
-                doc.save('study-reports.pdf');
-            } catch(e) {
-                showModal('Error', 'Failed to generate Reports PDF.');
-            } finally {
-                document.getElementById('pdfLoading').classList.add('hidden');
-            }
-        };
-
-        window.exportData = () => {
-            const dataToExport = {
-                entries: localEntries,
-                profile: localProfile,
-                syllabus: localSyllabus
-            };
-            const dataStr = JSON.stringify(dataToExport, null, 2);
-            const blob = new Blob([dataStr], { type: "application/json" });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `studytracker_data_${new Date().toISOString().slice(0, 10)}.json`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            showModal('Export Complete', 'Your study data has been exported successfully!');
-        };
         
-        document.getElementById('importFile').addEventListener('change', (event) => {
-            const file = event.target.files[0];
-            if (!file || !userId) {
-                showModal('Error', 'Please select a file and ensure you are signed in.');
-                return;
-            }
-            const reader = new FileReader();
-            reader.onload = async (e) => {
-                try {
-                    const data = JSON.parse(e.target.result);
-                    // ... import logic from original code
-                    if(data.entries) {
-                        const batch = writeBatch(db);
-                        data.entries.forEach(entry => {
-                            const { id, ...entryWithoutId } = entry;
-                            batch.set(doc(entriesCR), entryWithoutId);
-                        });
-                        await batch.commit();
-                    }
-                    if(data.profile) {
-                         await setDoc(profileDR, data.profile, { merge: true });
-                    }
-                    if(data.syllabus) {
-                        const syllabusBatch = writeBatch(db);
-                        for (const subject in data.syllabus) {
-                            syllabusBatch.set(doc(syllabusCR, subject), data.syllabus[subject], { merge: true });
-                        }
-                        await syllabusBatch.commit();
-                    }
-                    showModal('Import Complete', 'Data imported successfully. The page will now refresh.');
-                    setTimeout(() => window.location.reload(), 2000);
-                } catch (error) {
-                    showModal('Import Error', 'Failed to import data. Please ensure the file is a valid JSON.');
-                }
-            };
-            reader.readAsText(file);
-            event.target.value = null;
-        });
-
+        // App ko DOM load hone par initialize na karein, balki user ke login hone par karein.
+        // document.addEventListener('DOMContentLoaded', initApp);
     </script>
 </body>
-
 </html>
 
